@@ -3,7 +3,7 @@ import schedule
 import time
 
 TOKEN = "7437071694:AAHLC0efJ-pc9IZIjCCyjyz--8JxaMTi9Xw"
-CHAT_ID = "@ReminderGPT_bot"
+CHAT_ID = "7896128849"
 
 bot = Bot(token=TOKEN)
 
