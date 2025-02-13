@@ -17,7 +17,7 @@ def iniciar_bot():
     # Define el horario del recordatorio
     schedule.every().day.at("08:00").do(enviar_recordatorio)
     
-    # Ejecutar el planificador
+    # Ejecutar el planificador sin bloqueo
     while True:
         schedule.run_pending()
         time.sleep(60)  # Espera 1 minuto antes de volver a ejecutar el código
