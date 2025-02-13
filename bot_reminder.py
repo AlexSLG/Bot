@@ -1,21 +1,26 @@
-from telegram import Bot
-import schedule
 import time
+import schedule
+from telegram import Bot
 
 TOKEN = "7437071694:AAHLC0efJ-pc9IZIjCCyjyz--8JxaMTi9Xw"
-CHAT_ID = "7896128849"
+CHAT_ID = 7896128849  # Asegúrate de que esté correcto
 
 bot = Bot(token=TOKEN)
 
 def enviar_recordatorio():
-    print("Enviando recordatorio...")  # <-- Nueva línea para ver en logs
+    print("Enviando recordatorio...")
     bot.send_message(chat_id=CHAT_ID, text="¡No olvides tu clase!")
 
-print("Bot iniciado...")  # <-- Nueva línea para ver en logs
+def iniciar_bot():
+    print("Bot iniciado...")
 
-schedule.every().day.at("08:00").do(enviar_recordatorio)
+    # Define el horario del recordatorio
+    schedule.every().day.at("08:00").do(enviar_recordatorio)
+    
+    # Ejecutar el planificador
+    while True:
+        schedule.run_pending()
+        time.sleep(60)  # Espera 1 minuto antes de volver a ejecutar el código
 
-while True:
-    schedule.run_pending()
-    print("Esperando siguiente tarea...")  # <-- Nueva línea para ver en logs
-    time.sleep(60)
+if __name__ == "__main__":
+    iniciar_bot()
